@@ -1,0 +1,8 @@
+*.exe 
+*.out 
+out 
+input*
+*.txt 
+test.cpp
+main.cpp
+
