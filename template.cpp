@@ -55,6 +55,70 @@ using oset =
 #define EACH(x, a) for (auto &x : a)
 
 /*--- Read Functions ---*/
+
+int nxt() {
+    int x = 0;
+    bool negative = false;
+    int c = getchar_unlocked();
+    while ((c < '0' || c > '9') && c != '-') {
+        c = getchar_unlocked();
+    }
+
+    if (c == '-') {
+        negative = true;
+        c = getchar_unlocked();
+    }
+    while (c >= '0' && c <= '9') {
+        x = (x << 1) + (x << 3) + c - 48;
+        c = getchar_unlocked();
+    }
+
+    if (negative) {
+        return -x;
+    }
+
+    return x;
+}
+
+string nxts() {
+    string i = "";
+    int temp = getchar_unlocked();
+    while (temp < '!' || temp > '~') temp = getchar_unlocked();
+    while (temp >= '!' && temp <= '~') {
+        i += static_cast<char>(temp);
+        temp = getchar_unlocked();
+    }
+    return i;
+}
+
+int64_t nxtl() {
+    int64_t x = 0;
+    bool negative = false;
+    int c = getchar_unlocked();
+    while ((c < '0' || c > '9') && c != '-') {
+        c = getchar_unlocked();
+    }
+
+    if (c == '-') {
+        negative = true;
+        c = getchar_unlocked();
+    }
+    while (c >= '0' && c <= '9') {
+        x = (x << 1) + (x << 3) + c - 48;
+        c = getchar_unlocked();
+    }
+
+    if (negative) {
+        return -x;
+    }
+
+    return x;
+}
+
+void read(string &s) { s = nxts(); }
+void read(int &x) { x = nxt(); }
+void read(int64_t &x) { x = nxtl(); }
+
 template <class A>
 void read(vt<A> &v);
 template <class A, size_t S>
@@ -121,13 +185,16 @@ string to_string(T v) {
 }
 
 /*--- Write Functions ---*/
+void write(string x) {
+    EACH(c, x) { putchar_unlocked(c); }
+}
 
 template <class A, class B>
 void write(pair<A, B> x);
 
 template <class A>
 void write(A x) {
-    cout << to_string(x);
+    write(to_string(x));
 }
 template <class H, class... T>
 void write(const H &h, const T &...t) {
