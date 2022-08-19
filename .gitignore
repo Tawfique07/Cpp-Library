@@ -5,4 +5,4 @@ input*
 *.txt 
 test.cpp
 main.cpp
-
+.gitignore
