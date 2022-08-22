@@ -17,7 +17,7 @@ uint64_t nCr(int n, int r) {
             p *= n;
             k *= r;
 
-            u_int64_t m = __gcd(p, k);
+            uint64_t m = __gcd(p, k);
 
             p /= m;
             k /= m;
