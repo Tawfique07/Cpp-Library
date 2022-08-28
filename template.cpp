@@ -56,6 +56,12 @@ using oset =
 
 /*--- Read Functions ---*/
 
+int nxtc() {
+    int c = getchar_unlocked();
+    while (c < '!' || c > '~') c = getchar_unlocked();
+    return c;
+}
+
 int nxt() {
     int x = 0;
     bool negative = false;
