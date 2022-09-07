@@ -23,6 +23,13 @@ template <typename T>
 using oset =
     tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 
+/*--- Windows Specific ---*/
+#ifdef _WIN32
+// no getchar_unlocked on Windows so just call getchar
+inline int getchar_unlocked() { return _getchar_nolock(); }
+inline void putchar_unlocked(int c) { _putchar_nolock(c); }
+#endif
+
 /*--- Basic Macros ---*/
 #define endl "\n"
 #define ll int64_t
